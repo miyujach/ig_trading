@@ -1,19 +1,24 @@
 {
   "compilerOptions": {
-    "target": "esnext",
-    "module": "esnext",
+    "target": "ESNext",
+    "module": "ESNext",
+    "resolveJsonModule": true,
     "strict": true,
     "jsx": "preserve",
     "importHelpers": true,
     "moduleResolution": "node",
     "experimentalDecorators": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
+    "emitDecoratorMetadata": true,
     "allowSyntheticDefaultImports": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "typeRoots" : ["typings/**/*"],
+    "plugins": [
+      { "name": "ts-vue-plugin" }
+    ],
     "sourceMap": true,
     "baseUrl": ".",
     "types": [
-      "webpack-env"
+      "node"
     ],
     "paths": {
       "@/*": [
@@ -21,18 +26,15 @@
       ]
     },
     "lib": [
-      "esnext",
+      "es2015",
       "dom",
       "dom.iterable",
       "scripthost"
     ]
   },
   "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue",
-    "tests/**/*.ts",
-    "tests/**/*.tsx"
+    "src/**/*",
+    "tests/**/*",
   ],
   "exclude": [
     "node_modules"
