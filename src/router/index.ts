@@ -1,20 +1,20 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
-import Layout from '../views/Layout.vue';
-import Home from '../views/pages/Home.vue';
+import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
+import Layout from "../views/Layout.vue";
+import Home from "../views/pages/Home.vue";
 
 const routes: RouteRecordRaw[] = [
-	{ path: '/:catchAll(.*)', redirect: '/' },
+	{ path: "/:catchAll(.*)", redirect: "/" },
 	{
-		path: '/',
+		path: "/",
 		component: Layout,
-		name: 'Layout',
-		redirect: () => 'flights',
+		name: "Layout",
+		redirect: () => "flights",
 		meta: { dataIsLoad: true },
 		children: [
 			{
-				path: '/',
-				name: 'Home',
-				meta: { description: 'Home' },
+				path: "/",
+				name: "Home",
+				meta: { description: "Home" },
 				component: Home,
 			},
 		],

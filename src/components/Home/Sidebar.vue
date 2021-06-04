@@ -40,20 +40,20 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component';
-import { Action } from 'vuex-class';
-import { EnumRequestRetreiveMarketHistoryResolution } from '@/store/modules/markets/interfaces';
-import { Chart } from '@/components/chart_stock';
+import { Options, Vue } from "vue-class-component";
+import { Action } from "vuex-class";
+import { EnumRequestRetreiveMarketHistoryResolution } from "@/store/modules/markets/interfaces";
+import { Chart } from "@/components/chart_stock";
 
 @Options({
 	components: {
 	},
 })
 export default class Sidebar extends Vue {
-	@Action('requestRetreiveMarkets') requestRetreiveMarkets: any;
-	@Action('requestRetreiveMarketHistoryPrices') requestRetreiveMarketHistoryPrices: any;
+	@Action("requestRetreiveMarkets") requestRetreiveMarkets: any;
+	@Action("requestRetreiveMarketHistoryPrices") requestRetreiveMarketHistoryPrices: any;
 
-	marketName = 'DAX';
+	marketName = "DAX";
 	items = [];
 	headers: string[] = [];
 
@@ -63,12 +63,12 @@ export default class Sidebar extends Vue {
 		this.requestRetreiveMarketHistoryPrices({
 			market: row.name,
 			resolution: EnumRequestRetreiveMarketHistoryResolution.MINUTE_15,
-			from: '2021-01-4T09:00:00',
-			to: '2021-01-5T09:40:00',
+			from: "2021-01-4T09:00:00",
+			to: "2021-01-5T09:40:00",
 			pageSize: 0,
 		})
 			.then((response: any) => {
-				console.log('HISTORY :', response);
+				console.log("HISTORY :", response);
 				this.historicPrices = response;
 				new Chart(document, response);
 			});

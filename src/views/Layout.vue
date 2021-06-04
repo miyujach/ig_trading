@@ -8,8 +8,8 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component';
-import Header from '@/views/Header.vue';
+import { Options, Vue } from "vue-class-component";
+import Header from "@/views/Header.vue";
 
 @Options({
 	components: {
