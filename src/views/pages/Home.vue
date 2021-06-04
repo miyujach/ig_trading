@@ -30,10 +30,6 @@ export default class Home extends Vue {}
   width: 100%;
   height: 100%;
 
-  .sidebar {
-    display: flex;
-    width: 400px;
-  }
   .market-view {
     display: flex;
     width: 100%;
