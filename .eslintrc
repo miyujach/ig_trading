@@ -1,47 +1,72 @@
 {
-    "root": true,
-    "parser": "vue-eslint-parser",
-    "parserOptions": {
-      "parser": "@typescript-eslint/parser"
-    },
-    "extends": [
-      "plugin:@typescript-eslint/recommended",
-      "plugin:vue/essential",
-      "@vue/airbnb"
+  "root": true,
+  "parser": "vue-eslint-parser",
+  "parserOptions": {
+    "parser": "@typescript-eslint/parser"
+  },
+  "extends": [
+    "plugin:@typescript-eslint/recommended",
+    "plugin:vue/essential",
+    "@vue/airbnb"
+  ],
+  "plugins": [
+    "vue",
+    "@typescript-eslint"
+  ],
+  "rules": {
+    "max-len": [
+      2,
+      250,
+      4,
+      {
+        "ignoreUrls": true
+      }
     ],
-    "plugins": [
-      "vue",
-      "@typescript-eslint"
+    "no-param-reassign": [
+      2,
+      {
+        "props": false
+      }
     ],
-    "rules": {
-      "max-len": [2, 250, 4, {"ignoreUrls": true}],
-      "no-param-reassign": [2, { "props": false }],
-      "lines-between-class-members": 0,
-      "no-console": 0, 
-      "no-new": 0,
-      "no-trailing-spaces": 0,
-      "@typescript-eslint/explicit-module-boundary-types": 0,
-      "@typescript-eslint/indent": ["error", 2],
-      "@typescript-eslint/explicit-function-return-type": ["error", {
+    "lines-between-class-members": 0,
+    "no-console": 0,
+    "no-new": 0,
+    "no-tabs": 0,
+    "no-trailing-spaces": 0,
+    "indent": "off",
+    "quotes": [
+      2,
+      "double",
+      {
+        "avoidEscape": true
+      }
+    ],
+    "@typescript-eslint/explicit-module-boundary-types": 0,
+    "@typescript-eslint/indent": 0,
+    // "@typescript-eslint/indent": ["error", 2],
+    "@typescript-eslint/explicit-function-return-type": [
+      "error",
+      {
         "allowExpressions": true,
         "allowTypedFunctionExpressions": true,
         "allowHigherOrderFunctions": true
-      }],
-      "@typescript-eslint/no-non-null-assertion": 0,
-      "@typescript-eslint/ban-types": [
-        "error",
-        {
-          "types": {
-            "Array": null,
-            "Object": "Use {} instead",
-            "String": {
-              "message": "Use string instead",
-              "fixWith": "string"
-            }
+      }
+    ],
+    "@typescript-eslint/no-non-null-assertion": 0,
+    "@typescript-eslint/ban-types": [
+      "error",
+      {
+        "types": {
+          "Array": null,
+          "Object": "Use {} instead",
+          "String": {
+            "message": "Use string instead",
+            "fixWith": "string"
           }
         }
-      ],
-      "@typescript-eslint/no-explicit-any": "off",
-      "@typescript-eslint/strict-null-checks": "off"
-    }
+      }
+    ],
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/strict-null-checks": "off"
+  }
 }

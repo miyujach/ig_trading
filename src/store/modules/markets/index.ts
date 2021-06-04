@@ -4,8 +4,8 @@ import getters from './getters';
 import mutations from './mutations';
 
 export default {
-  state: (): any => state,
-  actions,
-  getters,
-  mutations,
+	state: (): any => state,
+	actions,
+	getters,
+	mutations,
 };
