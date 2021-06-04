@@ -35,9 +35,9 @@ export default class HelloWorld extends Vue {
 
   mounted() {
     const rest_url = 'https://demo-api.ig.com/gateway/deal/session';
-    const rest_api_key = 'a66c12b35ca59c06d528d4efb3198cb338f4c56a';
-    const rest_identifier = 'michaeljachtls_demo';
-    const rest_password = 'Escapethefate46300!';
+    const rest_api_key = 'x';
+    const rest_identifier = 'x';
+    const rest_password = 'x';
     
     const IG_API = new IG_API_Connexion();
     IG_API.addObserver(this);
