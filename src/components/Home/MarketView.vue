@@ -1,17 +1,28 @@
 <template>
   <div class="market-view">
-    <svg id="ig-trading-chart" width="100%" height="100%"></svg>
+    <Chart ref="chartBuilder" />
   </div>
 </template>
 
 <script lang="ts">
 /* eslint-disable */
 import { Options, Vue } from "vue-class-component";
+import Chart from "@/components/Home/Chart/Chart.vue";
 
 @Options({
-  components: {},
+  components: {
+    Chart,
+  },
 })
-export default class HelloWorld extends Vue {}
+export default class HelloWorld extends Vue {
+  market: any = null;
+
+  marketView(market: any): void {
+    this.market = market;
+    const c: any = this.$refs.chartBuilder;
+    c.marketView(market);
+  }
+}
 </script>
 
 <style lang="scss">

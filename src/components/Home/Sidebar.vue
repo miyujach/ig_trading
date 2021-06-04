@@ -33,7 +33,7 @@
               <th>Name</th>
               <th>Statut</th>
             </tr>
-            <tr v-for="row in items" :key="row" @click="viewHistory(row)">
+            <tr v-for="row in items" :key="row" @click="viewChart(row)">
               <td>
                 {{ row.instrumentName }}
               </td>
@@ -44,9 +44,6 @@
           </table>
         </div>
       </div>
-      <div id="page-ig">
-        <router-view />
-      </div>
     </div>
   </div>
 </template>
@@ -54,39 +51,24 @@
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
 import { Action } from "vuex-class";
-import { EnumRequestRetreiveMarketHistoryResolution } from "@/store/modules/markets/interfaces";
-import { Chart } from "@/components/chart_stock";
 
 @Options({
   components: {},
 })
 export default class Sidebar extends Vue {
   @Action("requestRetreiveMarkets") requestRetreiveMarkets: any;
-  @Action("requestRetreiveMarketHistoryPrices")
-  requestRetreiveMarketHistoryPrices: any;
 
   marketName = "DAX";
   items = [];
   headers: string[] = [];
 
-  historicPrices: any;
-
-  mouted(): void {
+  mounted(): void {
     this.retreiveMarkets();
   }
 
-  viewHistory(row: any): void {
-    this.requestRetreiveMarketHistoryPrices({
-      market: row.name,
-      resolution: EnumRequestRetreiveMarketHistoryResolution.MINUTE_15,
-      from: "2021-01-4T09:00:00",
-      to: "2021-01-5T09:40:00",
-      pageSize: 0,
-    }).then((response: any) => {
-      console.log("HISTORY :", response);
-      this.historicPrices = response;
-      new Chart(document, response);
-    });
+  viewChart(row: any): void {
+    console.log(row);
+    this.$emit("viewChartEvent", row);
   }
 
   retreiveMarkets(): void {

@@ -1,8 +1,9 @@
 <template>
   <div class="view-page view-home-page">
     <template v-if="connectedToIG">
-      <Sidebar class="sidebar" />
+      <Sidebar class="sidebar" v-on:view-chart-event="viewMarket" />
       <MarketView
+        ref="market"
         class="market-view"
         msg="Welcome to Your Vue.js + TypeScript App"
       />
@@ -22,8 +23,8 @@ import { ACCOUNT_IG } from "../../utils/IgConnexionEnum";
 @Options({
   components: {
     MarketView,
-    Sidebar
-  }
+    Sidebar,
+  },
 })
 export default class Home extends Vue {
   @Action("requestRetreiveMarkets") requestRetreiveMarkets: any;
@@ -67,11 +68,16 @@ export default class Home extends Vue {
             "CHANGE_PCT",
             "MARKET_DELAY",
             "MARKET_STATE",
-            "UPDATE_TIME"
+            "UPDATE_TIME",
           ]
         );
       });
     });
+  }
+
+  viewMarket(market: any): void {
+    const m: any = this.$refs.market;
+    m.marketView(market);
   }
 
   // updateMarket(resultItemUpdate: any) {
