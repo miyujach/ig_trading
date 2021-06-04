@@ -16,6 +16,11 @@
     "rules": {
       "max-len": [2, 250, 4, {"ignoreUrls": true}],
       "no-param-reassign": [2, { "props": false }],
+      "lines-between-class-members": 0,
+      "no-console": 0, 
+      "no-new": 0,
+      "no-trailing-spaces": 0,
+      "@typescript-eslint/explicit-module-boundary-types": 0,
       "@typescript-eslint/indent": ["error", 2],
       "@typescript-eslint/explicit-function-return-type": ["error", {
         "allowExpressions": true,

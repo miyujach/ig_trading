@@ -7,6 +7,16 @@ import store from './store';
 
 import interceptor from '@/helpers/httpInterceptor';
 
+import Vuikit from 'vuikit'
+import VuikitIcons from '@vuikit/icons'
+import '@vuikit/theme'
+
+
+//import UIkit from 'uikit';
+//import Icons from 'uikit/dist/js/uikit-icons';
+//import "uikit/dist/css/uikit.min.css";
+//UIkit.use(Icons);
+
 // Global variable
 // Vue.set(Vue.prototype, '$NotifMail', NotifMail);
 
@@ -28,8 +38,10 @@ interceptor();
   
 // export { i18n as default };
 
-
 createApp(App)
   .use(store)
   .use(router)
+  //.use(UIkit)
+  .use(Vuikit)
+  .use(VuikitIcons)
   .mount('#app');

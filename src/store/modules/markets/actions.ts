@@ -19,7 +19,6 @@ export default {
           result(response.data.markets);
         })
         .catch(error => {
-          console.log('error :', error)
           reject(error);
           throw new error(error);
         });
@@ -38,12 +37,10 @@ export default {
       axios
         .get(`https://demo-api.ig.com/gateway/deal/prices/${market}?resolution=${resolution}&from=${from}&to=${to}&pageSize=${pageSize}`)
         .then(response => {
-          console.log(' response.data ', response.data)
           // commit(RETREIVE_HISTORIC_PRICES_MARKETS, response.data.markets);
           result(response.data);
         })
-        .catch(error => {
-          console.log('error :', error)
+        .catch((error) => {
           reject(error);
           throw new error(error);
         });

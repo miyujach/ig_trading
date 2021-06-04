@@ -11,7 +11,9 @@
     "emitDecoratorMetadata": true,
     "allowSyntheticDefaultImports": true,
     "suppressImplicitAnyIndexErrors": true,
-    "typeRoots" : ["typings/**/*"],
+    "typeRoots" : [
+      "typings/**/*"
+    ],
     "plugins": [
       { "name": "ts-vue-plugin" }
     ],

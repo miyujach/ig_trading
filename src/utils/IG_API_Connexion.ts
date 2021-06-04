@@ -32,8 +32,6 @@ export class IG_API_Connexion {
     });
 
     connectToLightstreamer = (lsEndpoint: string, activeAccountId: string, client_token: string, account_token: string): Promise<any> => new Promise((resolve: (PromiseResolve<any>), reject: PromiseReject): void => {
-      console.log('Trying to connect to LightStreamer...');
-
       // Instantiate Lightstreamer client instance
       const lsClient = new LightstreamerClient(lsEndpoint);
 
@@ -47,8 +45,6 @@ export class IG_API_Connexion {
       lsClient.addListener({
         onListenStart: () => {
           console.log('Connected to LightStreamer! Listen start.');
-          console.log(lsClient);
-          // lsSubscribe(lsClient, ["L1:IX.D.DAX.IFMM.IP"], ["BID"]);
           resolve(lsClient);
         },
         onStatusChange: (status) => {
@@ -56,27 +52,23 @@ export class IG_API_Connexion {
         },
       });
 
-      // Connect to Lightstreamer
       lsClient.connect();
     });
 
     subsribeLightStreamer(lsClient: any, itemList: string[], fieldList: string[]): any {
-      console.log('lsclient:', lsClient);
-      // include the Lightstreamer Subscription module using require.js
-
       const subscription = new Subscription(
         'MERGE',
-        itemList, // e.g. {"MARKET:IX.D.FTSE.DAILY.IP","MARKET:MT.D.GC.MONTH1.IP"}
-        fieldList, // e.g. {"BID", "OFFER"}
+        itemList, // ["MARKET:IX.D.FTSE.DAILY.IP", ...]
+        fieldList, // ['BID', 'OFFER', 'HIGH', 'LOW', 'MID_OPEN', 'CHANGE', 'CHANGE_PCT', 'MARKET_DELAY', 'MARKET_STATE', 'UPDATE_TIME']
       );
 
       // Set up Lightstreamer event listener
       subscription.addListener({
         onSubscription: () => {
-          console.log('subscribed');
+          console.log('Subscribed');
         },
         onUnsubscription: () => {
-          console.log('unsubscribed');
+          console.log('Unsubscribed');
         },
         onSubscriptionError: (code, message) => {
           console.log(`subscription failure: ${code} message: ${message}`);
@@ -96,7 +88,7 @@ export class IG_API_Connexion {
             itemName: epic,
             ...result,
           };
-          // console.log(result);
+
           this.notifyObserversOnMarketUpdate(result);
         },
       });

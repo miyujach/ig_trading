@@ -10,7 +10,6 @@ export const RERETREIVE_MARKETS = 'RERETREIVE_MARKETS';
 // Mutations
 export default {
   [RETREIVE_MARKETS](state: IMarketsState, markets_list: IMarket[]) {
-    console.log("state :", state)
     state.markets = markets_list;
     return null;
   },
