@@ -7,5 +7,5 @@ export default {
 	state: (): any => state,
 	actions,
 	getters,
-	mutations,
+	mutations
 };

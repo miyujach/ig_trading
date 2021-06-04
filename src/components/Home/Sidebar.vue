@@ -71,6 +71,10 @@ export default class Sidebar extends Vue {
 
   historicPrices: any;
 
+  mouted(): void {
+    this.retreiveMarkets();
+  }
+
   viewHistory(row: any): void {
     this.requestRetreiveMarketHistoryPrices({
       market: row.name,

@@ -7,64 +7,11 @@
 <script lang="ts">
 /* eslint-disable */
 import { Options, Vue } from "vue-class-component";
-import { IG_API_Connexion } from "../../utils/IG_API_Connexion";
-import { ACCOUNT_IG } from "../../utils/IG_connexion_enum";
-import { Action, Getter } from "vuex-class";
 
 @Options({
   components: {},
 })
-export default class HelloWorld extends Vue {
-  @Action("requestRetreiveMarkets") requestRetreiveMarkets: any;
-  @Action("requestRetreiveMarketHistoryPrices")
-  requestRetreiveMarketHistoryPrices: any;
-  @Getter("getMarkets") getMarkets: any;
-  market_name = "DAX";
-  items = [];
-  headers: string[] = [];
-  historic_prices: any;
-
-  mounted() {
-    const IG_API = new IG_API_Connexion();
-    IG_API.addObserver(this);
-    IG_API.init_connexion_IG_API().then((response) => {
-      console.log("Connected :", response.data.lightstreamerEndpoint);
-      const account = response.data.accounts.filter(
-        (account: any) => account.accountName === ACCOUNT_IG.CFD
-      );
-      const { accountId } = account;
-
-      const lsClient = IG_API.connectToLightstreamer(
-        response.data.lightstreamerEndpoint,
-        accountId,
-        response.headers.cst,
-        response.headers["x-security-token"]
-      ).then((lsClient) => {
-        // Retreive live stream off stock
-        IG_API.subsribeLightStreamer(
-          lsClient,
-          ["L1:IX.D.DAX.IFMM.IP"],
-          [
-            "BID",
-            "OFFER",
-            "HIGH",
-            "LOW",
-            "MID_OPEN",
-            "CHANGE",
-            "CHANGE_PCT",
-            "MARKET_DELAY",
-            "MARKET_STATE",
-            "UPDATE_TIME",
-          ]
-        );
-      });
-    });
-  }
-
-  updateMarket(resultItemUpdate: any) {
-    // console.log('MODEL :', resultItemUpdate)
-  }
-}
+export default class HelloWorld extends Vue {}
 </script>
 
 <style lang="scss">

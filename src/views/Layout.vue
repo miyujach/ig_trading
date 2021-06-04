@@ -13,8 +13,8 @@ import Header from "@/views/Header.vue";
 
 @Options({
 	components: {
-		Header,
-	},
+		Header
+	}
 })
 export default class Layout extends Vue {}
 </script>

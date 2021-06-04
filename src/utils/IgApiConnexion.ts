@@ -2,15 +2,15 @@
 
 import axios from 'axios';
 import { Subscription, LightstreamerClient } from 'lightstreamer-client-web';
-import { ACCOUNT_IG, PromiseReject, PromiseResolve } from './IG_connexion_enum';
+import { ACCOUNT_IG, PromiseReject, PromiseResolve } from './IgConnexionEnum';
 import IgCredentials from '@/utils/IgCredentials';
 
-export class IG_API_Connexion {
+export class IgApiConnexion {
   constructor() { }
   private observers: any[] = [];
 
 
-  init_connexion_IG_API = (): Promise<any> => new Promise((resolve: (PromiseResolve<any>), reject: PromiseReject): void => {
+  initConnexionIgApi = (): Promise<any> => new Promise((resolve: (PromiseResolve<any>), reject: PromiseReject): void => {
     const { api_url,
       api_key,
       identifier,

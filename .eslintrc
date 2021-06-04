@@ -41,6 +41,7 @@
         "avoidEscape": true
       }
     ],
+    "comma-dangle": 0,
     "@typescript-eslint/explicit-module-boundary-types": 0,
     "@typescript-eslint/indent": 0,
     // "@typescript-eslint/indent": ["error", 2],
